@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import { LayoutBasic } from '@/components/layout/basic'
-import { SignInForm, GoogleButton } from '@/components/authentication'
+import { SignInForm, SocialMediaButtons } from '@/components/authentication'
 import { useUser } from '@/hooks/user'
 
 const SignIn = () => {
@@ -27,9 +27,7 @@ const SignIn = () => {
             Or continue with
           </div>
 
-          <div className="flex space-x-4">
-            <GoogleButton />
-          </div>
+          <SocialMediaButtons />
         </div>
       </div>
     </div>
