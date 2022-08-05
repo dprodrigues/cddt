@@ -22,8 +22,6 @@ const FirebaseProvider = ({ children }) => {
     db: undefined,
   })
 
-  console.log('here')
-
   const value = useMemo(
     () => ({
       db: sections.db,
