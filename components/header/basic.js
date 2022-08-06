@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import Image from 'next/image'
+import Image from 'next/future/image'
 
 export const HeaderBasic = () => (
   <header className="max-w-7xl mx-auto px-4 sm:px-6">
