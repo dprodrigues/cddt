@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 export const LoggedOut = () => (
-  <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+  <div className="flex items-center justify-end">
     <Link href="/auth/sign-in">
       <a className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">
         Sign in
