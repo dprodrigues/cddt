@@ -7,7 +7,7 @@ const SignIn = () => {
   const router = useRouter()
   const { user } = useUser()
 
-  if (user) {
+  if (user?.email) {
     router.push('/')
   }
 
