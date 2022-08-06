@@ -6,6 +6,11 @@ const nextConfig = {
   images: {
     domains: ['lh3.googleusercontent.com', 'tailwindui.com'],
   },
+  experimental: {
+    images: {
+      allowFutureImage: true,
+    },
+  },
 }
 
 module.exports = nextConfig
