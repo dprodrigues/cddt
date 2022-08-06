@@ -3,7 +3,12 @@ import { onAuthStateChanged } from 'firebase/auth'
 import { useFirebase } from '@/contexts/firebase'
 
 export const useUser = () => {
-  const [user, setUser] = useState()
+  const [user, setUser] = useState({
+    uid: undefined,
+    displayName: undefined,
+    email: undefined,
+    photoURL: undefined,
+  })
   const [loading, setLoading] = useState(true)
   const { auth } = useFirebase()
 
