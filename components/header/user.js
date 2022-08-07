@@ -30,10 +30,10 @@ export const User = () => {
             alt="User image"
             height={40}
             width={40}
-            className="rounded-full border-2 border-black"
+            className="rounded-full border-2 border-rose-900"
           />
         ) : (
-          <div className="h-10 w-10 flex items-center justify-center rounded-full bg-rose-700 text-white uppercase font-bold border-2 border-black">
+          <div className="h-10 w-10 flex items-center justify-center rounded-full bg-rose-700 text-white uppercase font-bold border-2 border-rose-900">
             {user?.displayName ? user.displayName[0] : user?.email?.[0]}
           </div>
         )}
