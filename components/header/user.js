@@ -60,10 +60,10 @@ export const User = () => {
               </a>
             </Link>
 
-            <Link href="/configurations">
+            <Link href="/settings">
               <a className="flex items-center w-full px-4 py-2 focus:outline-none text-sm text-gray-900 hover:bg-gray-50 transition-colors duration-100">
                 <FaCog className="text-gray-700 mr-1" />
-                Configurations
+                Settings
               </a>
             </Link>
 
