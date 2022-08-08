@@ -3,13 +3,10 @@ import { onAuthStateChanged } from 'firebase/auth'
 import { useFirebase } from '@/contexts/firebase'
 
 export const useUser = () => {
-  const [user, setUser] = useState({
-    uid: undefined,
-    displayName: undefined,
-    email: undefined,
-    photoURL: undefined,
+  const [state, setState] = useState({
+    user: null,
+    loading: true,
   })
-  const [loading, setLoading] = useState(true)
   const { auth } = useFirebase()
 
   useEffect(() => {
@@ -18,19 +15,11 @@ export const useUser = () => {
     }
 
     const unsubscriber = onAuthStateChanged(auth, async (user) => {
-      try {
-        if (user) {
-          const { uid, displayName, email, photoURL } = user
-          setUser({ uid, displayName, email, photoURL })
-        } else setUser(null)
-      } catch (error) {
-        console.error(error)
-      } finally {
-        setLoading(false)
-      }
+      setState({ user, loading: false })
     })
+
     return () => unsubscriber()
   }, [auth])
 
-  return { user, loading }
+  return state
 }
