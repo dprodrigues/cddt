@@ -30,7 +30,7 @@ export const SignUpForm = () => {
 
   const onSubmit = handleSubmit((values) => {
     createUserWithEmailAndPassword(auth, values.email, values.password)
-      .then(() => router.push('/app'))
+      .then(() => router.push('/auth/sign-up/complete-profile'))
       .catch((error) => console.error(error))
   })
 
