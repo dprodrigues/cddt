@@ -2,7 +2,6 @@ import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { useFirebase } from '@/contexts/firebase'
 import { REGEX_EMAIL, REGEX_PASSWORD } from '@/utils/constants'
@@ -21,7 +20,6 @@ const schema = yup.object({
 })
 
 export const SignInForm = () => {
-  const router = useRouter()
   const { auth } = useFirebase()
   const {
     register,
@@ -33,19 +31,21 @@ export const SignInForm = () => {
   })
 
   const onSubmit = handleSubmit(async (values) => {
-    signInWithEmailAndPassword(auth, values.email, values.password)
-      .then(() => router.push('/app'))
-      .catch((error) => {
-        if (error.code === 'auth/wrong-password') {
-          setError('password', { message: 'Password incorrect' })
-        }
+    try {
+      await signInWithEmailAndPassword(auth, values.email, values.password)
+    } catch (error) {
+      console.error(error)
 
-        if (error.code === 'auth/user-not-found') {
-        }
+      if (error.code === 'auth/wrong-password') {
+        setError('password', { message: 'Password incorrect' })
+      }
 
-        if (error.code === 'auth/too-many-requests') {
-        }
-      })
+      if (error.code === 'auth/user-not-found') {
+      }
+
+      if (error.code === 'auth/too-many-requests') {
+      }
+    }
   })
 
   return (

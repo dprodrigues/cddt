@@ -1,7 +1,6 @@
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
-import { useRouter } from 'next/router'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { useFirebase } from '@/contexts/firebase'
 import { REGEX_EMAIL, REGEX_PASSWORD } from '@/utils/constants'
@@ -19,7 +18,6 @@ const schema = yup.object({
 
 export const SignUpForm = () => {
   const { auth } = useFirebase()
-  const router = useRouter()
   const {
     register,
     handleSubmit,
@@ -28,10 +26,12 @@ export const SignUpForm = () => {
     resolver: yupResolver(schema),
   })
 
-  const onSubmit = handleSubmit((values) => {
-    createUserWithEmailAndPassword(auth, values.email, values.password)
-      .then(() => router.push('/auth/sign-up/complete-profile'))
-      .catch((error) => console.error(error))
+  const onSubmit = handleSubmit(async (values) => {
+    try {
+      await createUserWithEmailAndPassword(auth, values.email, values.password)
+    } catch (error) {
+      console.error(error)
+    }
   })
 
   return (

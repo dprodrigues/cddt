@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { LayoutBasic } from '@/components/layout/basic'
 import { SignUpForm, SocialMediaButtons } from '@/components/authentication'
@@ -7,9 +8,19 @@ const SignUp = () => {
   const router = useRouter()
   const { user } = useUser()
 
-  if (user?.email) {
-    router.push('/')
-  }
+  useEffect(() => {
+    if (!user) {
+      return
+    }
+
+    if (!user?.photoURL || !user?.displayName) {
+      router.push('/auth/sign-up/complete-profile')
+    }
+
+    if (user?.email) {
+      router.push('/app')
+    }
+  }, [user, router])
 
   return (
     <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
