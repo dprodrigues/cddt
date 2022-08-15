@@ -2,6 +2,7 @@ import { createContext, useState, useEffect, useContext, useMemo } from 'react'
 import { initializeApp, getApps, getApp } from 'firebase/app'
 import { getAuth, GoogleAuthProvider } from 'firebase/auth'
 import { getFirestore } from 'firebase/firestore'
+import { getStorage } from 'firebase/storage'
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -20,12 +21,12 @@ const FirebaseProvider = ({ children }) => {
   const [sections, setSections] = useState({
     auth: undefined,
     db: undefined,
+    storage: undefined,
   })
 
   const value = useMemo(
     () => ({
-      db: sections.db,
-      auth: sections.auth,
+      ...sections,
       provider: { google: new GoogleAuthProvider() },
     }),
     [sections]
@@ -37,6 +38,7 @@ const FirebaseProvider = ({ children }) => {
     setSections({
       auth: getAuth(),
       db: getFirestore(app),
+      storage: getStorage(),
     })
   }, [])
 
