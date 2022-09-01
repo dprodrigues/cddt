@@ -4,7 +4,11 @@ const nextConfig = {
   swcMinify: true,
   output: 'standalone',
   images: {
-    domains: ['lh3.googleusercontent.com', 'tailwindui.com'],
+    domains: [
+      'lh3.googleusercontent.com',
+      'tailwindui.com',
+      'avatars.githubusercontent.com',
+    ],
   },
   experimental: {
     images: {
