@@ -1,6 +1,11 @@
 import { createContext, useState, useEffect, useContext, useMemo } from 'react'
 import { initializeApp, getApps, getApp } from 'firebase/app'
-import { getAuth, GoogleAuthProvider } from 'firebase/auth'
+import {
+  getAuth,
+  GoogleAuthProvider,
+  GithubAuthProvider,
+  TwitterAuthProvider,
+} from 'firebase/auth'
 import { getFirestore } from 'firebase/firestore'
 import { getStorage } from 'firebase/storage'
 
@@ -27,7 +32,11 @@ const FirebaseProvider = ({ children }) => {
   const value = useMemo(
     () => ({
       ...sections,
-      provider: { google: new GoogleAuthProvider() },
+      provider: {
+        google: new GoogleAuthProvider(),
+        github: new GithubAuthProvider(),
+        twitter: new TwitterAuthProvider(),
+      },
     }),
     [sections]
   )
