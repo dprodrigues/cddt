@@ -1,3 +1,4 @@
+'use client'
 import { User } from './user'
 import { LoggedOut } from './logged-out'
 

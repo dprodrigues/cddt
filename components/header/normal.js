@@ -1,4 +1,5 @@
-import Image from 'next/future/image'
+'use client'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useUser } from '@/hooks/user'
 import { Login } from './login'
@@ -11,7 +12,7 @@ const UserSkeleton = () => (
   </div>
 )
 
-export const Header = () => {
+export default function Normal() {
   const { user, loading } = useUser()
 
   return (
@@ -19,17 +20,15 @@ export const Header = () => {
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center py-5 md:space-x-10">
         <div className="flex justify-start lg:w-0 lg:flex-1">
           <Link href="/">
-            <a>
-              <span className="sr-only">CDDT</span>
+            <span className="sr-only">CDDT</span>
 
-              <Image
-                className="h-8 w-auto sm:h-10"
-                src="/images/logos/logo.png"
-                alt="logo"
-                height={50}
-                width={50}
-              />
-            </a>
+            <Image
+              className="h-8 w-auto sm:h-10"
+              src="/images/logos/logo.png"
+              alt="logo"
+              height={50}
+              width={50}
+            />
           </Link>
         </div>
 

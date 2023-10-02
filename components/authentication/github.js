@@ -1,3 +1,4 @@
+'use client'
 import { FaGithub } from 'react-icons/fa'
 import { useFirebase } from '@/contexts/firebase'
 import { SocialButton } from './social-button'

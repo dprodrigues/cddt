@@ -1,3 +1,4 @@
+'use client'
 import { createContext, useState, useEffect, useContext, useMemo } from 'react'
 import { initializeApp, getApps, getApp } from 'firebase/app'
 import {

@@ -1,6 +1,7 @@
+'use client'
 import { Fragment } from 'react'
-import { useRouter } from 'next/router'
-import Image from 'next/future/image'
+import { useRouter } from 'next/navigation'
+import Image from 'next/image'
 import { signOut } from 'firebase/auth'
 import { Popover, Transition } from '@headlessui/react'
 import { FaUser, FaCog, FaSignOutAlt } from 'react-icons/fa'
@@ -53,18 +54,20 @@ export const User = () => {
           className="absolute top-11 -right-3 2xl:-right-[4.5rem] p-2 transition transform origin-top-right w-48"
         >
           <div className="rounded-lg relative shadow-md shadow-gray-200 border-gray-100 border bg-white divide-y divide-gray-100">
-            <Link href="/profile">
-              <a className="flex items-center w-full p-4 pb-2 focus:outline-none text-sm text-gray-900 hover:bg-gray-50 transition-colors duration-100">
-                <FaUser className="text-gray-700 mr-1" />
-                Profile
-              </a>
+            <Link
+              href="/app/profile"
+              className="flex items-center w-full p-4 pb-2 focus:outline-none text-sm text-gray-900 hover:bg-gray-50 transition-colors duration-100"
+            >
+              <FaUser className="text-gray-700 mr-1" />
+              Profile
             </Link>
 
-            <Link href="/settings">
-              <a className="flex items-center w-full px-4 py-2 focus:outline-none text-sm text-gray-900 hover:bg-gray-50 transition-colors duration-100">
-                <FaCog className="text-gray-700 mr-1" />
-                Settings
-              </a>
+            <Link
+              href="/app/settings"
+              className="flex items-center w-full px-4 py-2 focus:outline-none text-sm text-gray-900 hover:bg-gray-50 transition-colors duration-100"
+            >
+              <FaCog className="text-gray-700 mr-1" />
+              Settings
             </Link>
 
             <button

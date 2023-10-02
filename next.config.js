@@ -10,11 +10,6 @@ const nextConfig = {
       'avatars.githubusercontent.com',
     ],
   },
-  experimental: {
-    images: {
-      allowFutureImage: true,
-    },
-  },
 }
 
 module.exports = nextConfig

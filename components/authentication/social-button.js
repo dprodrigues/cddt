@@ -1,3 +1,4 @@
+'use client'
 import { signInWithPopup } from 'firebase/auth'
 import { useFirebase } from '@/contexts/firebase'
 
