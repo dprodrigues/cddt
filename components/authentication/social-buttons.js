@@ -1,16 +1,22 @@
-'use client'
-import { GoogleButton } from './google'
-import { GithubButton } from './github'
-import { TwitterButton } from './twitter'
+import { FaGoogle, FaGithub, FaTwitter } from 'react-icons/fa'
+import { SocialButton } from './social-button'
 
-export default function SocialMediaButtons() {
+export default function SocialButtons({ providers, onLogin }) {
   return (
     <div className="flex w-full flex-col space-y-4">
-      <GoogleButton />
+      <SocialButton
+        label="Google"
+        icon={<FaGoogle />}
+        provider={providers.google}
+        onLogin={onLogin}
+      />
 
-      <GithubButton />
-
-      <TwitterButton />
+      <SocialButton
+        label="Github"
+        icon={<FaGithub />}
+        provider={providers.github}
+        onLogin={onLogin}
+      />
     </div>
   )
 }

@@ -1,4 +1,6 @@
-'use client'
+export async function generateStaticParams() {
+  return [{}];
+}
 
 export default function Home() {
   return (
@@ -13,5 +15,5 @@ export default function Home() {
         load the authed user only on the client side.
       </p>
     </div>
-  )
+  );
 }

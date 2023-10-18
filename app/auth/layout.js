@@ -3,9 +3,9 @@ import { usePathname } from 'next/navigation'
 
 export default function LayoutAuth({ children }) {
   const pathname = usePathname()
-  const title = pathname.includes('sign-up')
-    ? 'Sign up on cddt. :D'
-    : 'Sign in with social media'
+  const title = pathname.includes('register')
+    ? 'Register on cddt. :D'
+    : 'Login with social media'
 
   return (
     <>

@@ -1,23 +1,28 @@
-'use client'
 import { Fragment } from 'react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
-import { signOut } from 'firebase/auth'
+// import { signOut } from 'firebase/auth'
 import { Popover, Transition } from '@headlessui/react'
 import { FaUser, FaCog, FaSignOutAlt } from 'react-icons/fa'
-import { useFirebase } from '@/contexts/firebase'
-import { useUser } from '@/hooks/user'
+// import { useFirebase } from '@/contexts/firebase'
+// import { useUser } from '@/hooks/user'
 import Link from 'next/link'
+
+import { useAuth } from '@/auth/context'
 
 export const User = () => {
   const router = useRouter()
-  const { auth } = useFirebase()
-  const { user } = useUser()
+  // const { auth } = useFirebase()
+  const { user } = useAuth()
 
-  const handleSignOut = () => {
-    signOut(auth)
-      .then(() => router.push('/'))
-      .catch((error) => console.error(error))
+  const handleSignOut = async () => {
+    // signOut(auth)
+    //   .then(() => router.push('/'))
+    //   .catch((error) => console.error(error))
+
+    await fetch('/api/logout')
+
+    router.push('/login')
   }
 
   return (
@@ -82,4 +87,6 @@ export const User = () => {
       </Transition>
     </Popover>
   )
+
+  return <></>
 }
