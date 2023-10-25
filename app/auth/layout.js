@@ -22,7 +22,7 @@ export default function LayoutAuth({ children }) {
       <style jsx scoped>
         {`
           .auth-container {
-            background-image: url(/images/auth-page-background.svg);
+            background-image: url(/svgs/auth-page-background.svg);
             background-repeat: no-repeat;
             background-position: bottom right;
             height: calc(100vh - 4.5rem);

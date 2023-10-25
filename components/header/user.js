@@ -1,28 +1,26 @@
 import { Fragment } from 'react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
-// import { signOut } from 'firebase/auth'
 import { Popover, Transition } from '@headlessui/react'
 import { FaUser, FaCog, FaSignOutAlt } from 'react-icons/fa'
-// import { useFirebase } from '@/contexts/firebase'
-// import { useUser } from '@/hooks/user'
+import { signOut } from 'firebase/auth'
+import { useFirebaseAuth } from '@/auth/firebase'
 import Link from 'next/link'
 
 import { useAuth } from '@/auth/context'
 
 export const User = () => {
   const router = useRouter()
-  // const { auth } = useFirebase()
+  const { getFirebaseAuth } = useFirebaseAuth()
   const { user } = useAuth()
 
-  const handleSignOut = async () => {
-    // signOut(auth)
-    //   .then(() => router.push('/'))
-    //   .catch((error) => console.error(error))
-
-    await fetch('/api/logout')
-
-    router.push('/login')
+  async function handleLogout() {
+    const auth = getFirebaseAuth()
+    await signOut(auth)
+    await fetch('/api/logout', {
+      method: 'GET',
+    })
+    router.push('/auth/login')
   }
 
   return (
@@ -59,29 +57,31 @@ export const User = () => {
           className="absolute top-11 -right-3 2xl:-right-[4.5rem] p-2 transition transform origin-top-right w-48"
         >
           <div className="rounded-lg relative shadow-md shadow-gray-200 border-gray-100 border bg-white divide-y divide-gray-100">
-            <Link
+            <Popover.Button
+              as={Link}
               href="/app/profile"
               className="flex items-center w-full p-4 pb-2 focus:outline-none text-sm text-gray-900 hover:bg-gray-50 transition-colors duration-100"
             >
               <FaUser className="text-gray-700 mr-1" />
               Profile
-            </Link>
+            </Popover.Button>
 
-            <Link
+            <Popover.Button
+              as={Link}
               href="/app/settings"
               className="flex items-center w-full px-4 py-2 focus:outline-none text-sm text-gray-900 hover:bg-gray-50 transition-colors duration-100"
             >
               <FaCog className="text-gray-700 mr-1" />
               Settings
-            </Link>
+            </Popover.Button>
 
-            <button
+            <Popover.Button
               className="flex items-center w-full text-left p-4 pt-2 text-sm text-gray-900 hover:bg-gray-50 transition-colors duration-100"
-              onClick={handleSignOut}
+              onClick={handleLogout}
             >
               <FaSignOutAlt className="text-gray-700 mr-1" />
               Sign out
-            </button>
+            </Popover.Button>
           </div>
         </Popover.Panel>
       </Transition>

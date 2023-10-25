@@ -31,7 +31,7 @@ export async function middleware(request) {
     cookieSerializeOptions: authConfig.cookieSerializeOptions,
     cookieSignatureKeys: authConfig.cookieSignatureKeys,
     serviceAccount: authConfig.serviceAccount,
-    handleValidToken: async ({ token, decodedToken }) => {
+    handleValidToken: async () => {
       if (PUBLIC_PATHS.includes(request.nextUrl.pathname)) {
         return redirectToHome(request)
       }
@@ -49,5 +49,5 @@ export async function middleware(request) {
 }
 
 export const config = {
-  matcher: ['/', '/api/login', '/api/logout'],
+  matcher: ['/app/:path*', '/api/login', '/api/logout'],
 }

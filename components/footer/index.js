@@ -8,5 +8,9 @@ export default function Footer() {
     return null
   }
 
-  return <footer>Made with ♥ by Daniel Rodrigues</footer>
+  return (
+    <footer className="text-center py-4">
+      Made with ♥ by Daniel Rodrigues
+    </footer>
+  )
 }

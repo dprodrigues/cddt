@@ -1,6 +1,6 @@
 'use client'
 
-import * as React from 'react'
+import React, { useState, useEffect } from 'react'
 import { onIdTokenChanged } from 'firebase/auth'
 import { useFirebaseAuth } from './firebase'
 import { AuthContext } from './context'
@@ -15,9 +15,12 @@ function toUser(user, idTokenResult) {
 
 export const AuthProvider = ({ defaultUser, children }) => {
   const { getFirebaseAuth } = useFirebaseAuth()
-  const [user, setUser] = React.useState(defaultUser)
+  const [user, setUser] = useState(defaultUser)
+  const [loading, setLoading] = useState(true)
 
   const handleIdTokenChanged = async (firebaseUser) => {
+    setLoading(false)
+
     if (!firebaseUser) {
       setUser(null)
       return
@@ -33,7 +36,7 @@ export const AuthProvider = ({ defaultUser, children }) => {
     return onIdTokenChanged(auth, handleIdTokenChanged)
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     const unsubscribePromise = registerChangeListener()
 
     return () => {
@@ -42,11 +45,7 @@ export const AuthProvider = ({ defaultUser, children }) => {
   }, [])
 
   return (
-    <AuthContext.Provider
-      value={{
-        user,
-      }}
-    >
+    <AuthContext.Provider value={{ user, loading }}>
       {children}
     </AuthContext.Provider>
   )

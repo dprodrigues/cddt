@@ -1,19 +1,20 @@
 'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
 import { Login } from './login'
 import { useAuth } from '@/auth/context'
 
-// const UserSkeleton = () => (
-//   <div role="status" className="flex items-center max-w-sm animate-pulse">
-//     <div className="h-10 bg-gray-200 rounded-md w-24 mr-2" />
-//     <div className="h-10 bg-gray-200 rounded-md w-24" />
-//     <span className="sr-only">Loading...</span>
-//   </div>
-// )
+const UserSkeleton = () => (
+  <div role="status" className="flex items-center max-w-sm animate-pulse">
+    <div className="h-10 bg-gray-200 rounded-md w-24 mr-2" />
+    <div className="h-10 bg-gray-200 rounded-md w-24" />
+    <span className="sr-only">Loading...</span>
+  </div>
+)
 
 export default function Normal() {
-  const { user } = useAuth()
+  const { user, loading } = useAuth()
 
   return (
     <header className="border-b-2 border-gray-100">
@@ -32,7 +33,7 @@ export default function Normal() {
           </Link>
         </div>
 
-        <Login user={user} />
+        {loading ? <UserSkeleton /> : <Login user={user} />}
       </div>
     </header>
   )
