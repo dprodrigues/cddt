@@ -38,7 +38,7 @@ export function LoginPage() {
   const handleLogin = (provider) => async () => {
     await login(getFirebaseAuth, provider)
 
-    router.push(redirect ?? '/')
+    router.push(redirect ?? '/app')
   }
 
   return <SocialButtons providers={providers} onLogin={handleLogin} />

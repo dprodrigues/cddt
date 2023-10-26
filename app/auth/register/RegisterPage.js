@@ -38,7 +38,7 @@ export function RegisterPage() {
   const handleLogin = (provider) => () => {
     login(getFirebaseAuth, provider)
 
-    router.push(redirect ?? '/')
+    router.push(redirect ?? '/app')
   }
 
   return <SocialButtons providers={providers} onLogin={handleLogin} />
