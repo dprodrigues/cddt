@@ -10,7 +10,7 @@ export default function LayoutAuth({ children }) {
   return (
     <>
       <div className="auth-container flex items-center justify-center px-4 sm:px-6 lg:px-8">
-        <div className="box w-full max-w-md flex items-center justify-center flex-col space-y-4 bg-white border-gray-200 shadow-2xl rounded-lg p-4 ">
+        <div className="box w-full max-w-md flex items-center justify-center flex-col space-y-4 bg-white border-gray-200 shadow-2xl rounded-lg p-8">
           <h2 className="mb-3 text-center text-2xl font-bold text-gray-900">
             {title}
           </h2>

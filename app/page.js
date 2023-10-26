@@ -22,7 +22,7 @@ export default function Home() {
           <div className="mt-10 flex items-center justify-center md:justify-start gap-x-6">
             <Link
               href="/auth/register"
-              className="rounded-md bg-rose-800 hover:bg-rose-700 active:bg-rose-900 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+              className="rounded-md bg-violet-800 hover:bg-violet-700 active:bg-violet-900 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
             >
               Get started for free
             </Link>
@@ -37,7 +37,7 @@ export default function Home() {
         </div>
 
         <Image
-          className="w-auto max-w-md lg:max-w-lg"
+          className="w-auto max-w-md lg:max-w-lg lg:-mr-8"
           src="/svgs/home-art.svg"
           alt="logo"
           height={500}

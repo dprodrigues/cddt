@@ -10,8 +10,8 @@ export default function Basic() {
           <span className="sr-only">CDDT</span>
 
           <Image
-            className="h-8 w-auto sm:h-10"
-            src="/images/logos/logo.png"
+            className="w-32"
+            src="/svgs/logo.svg"
             alt="logo"
             height={50}
             width={50}
