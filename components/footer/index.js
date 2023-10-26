@@ -10,7 +10,10 @@ export default function Footer() {
 
   return (
     <footer className="text-center py-4">
-      Made with ♥ by Daniel Rodrigues
+      Made with ♥ by{' '}
+      <a href="https://github.com/dprodrigues" target="_blank" rel="noopener">
+        Daniel Rodrigues
+      </a>
     </footer>
   )
 }
