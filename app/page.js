@@ -1,10 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-export async function generateStaticParams() {
-  return [{}]
-}
-
 export default function Home() {
   return (
     <div className="relative isolate py-32 px-6 pt-14 max-w-7xl mx-auto md:space-x-10">
