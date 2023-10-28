@@ -54,7 +54,7 @@ export const User = () => {
       >
         <Popover.Panel
           focus
-          className="absolute top-11 -right-3 2xl:-right-[4.5rem] p-2 transition transform origin-top-right w-48"
+          className="absolute top-11 -right-3 2xl:-right-[4.5rem] p-2 transition transform origin-top-right w-48 z-10"
         >
           <div className="rounded-lg relative shadow-md shadow-gray-200 border-gray-100 border bg-white divide-y divide-gray-100">
             <Popover.Button

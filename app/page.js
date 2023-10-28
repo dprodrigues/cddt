@@ -37,7 +37,7 @@ export default function Home() {
         </div>
 
         <Image
-          className="w-auto max-w-md lg:max-w-lg lg:-mr-8"
+          className="w-auto max-w-md lg:max-w-lg lg:-mr-8 z-0"
           src="/svgs/home-art.svg"
           alt="logo"
           height={500}
