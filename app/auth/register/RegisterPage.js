@@ -38,6 +38,7 @@ export function RegisterPage() {
   const handleLogin = (provider) => () => {
     login(getFirebaseAuth, provider)
 
+    router.refresh()
     router.push(redirect ?? '/app')
   }
 

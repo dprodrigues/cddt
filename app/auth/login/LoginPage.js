@@ -38,6 +38,7 @@ export function LoginPage() {
   const handleLogin = (provider) => async () => {
     await login(getFirebaseAuth, provider)
 
+    router.refresh()
     router.push(redirect ?? '/app')
   }
 

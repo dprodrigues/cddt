@@ -2,11 +2,16 @@ import { NextResponse } from 'next/server'
 import { authentication } from 'next-firebase-auth-edge/lib/next/middleware'
 import { authConfig } from './config/server'
 
-const PUBLIC_PATHS = ['/auth/register', '/auth/login', '/auth/reset-password']
+const PUBLIC_PATHS = [
+  '/',
+  '/auth/register',
+  '/auth/login',
+  '/auth/reset-password',
+]
 
 function redirectToHome(request) {
   const url = request.nextUrl.clone()
-  url.pathname = '/'
+  url.pathname = '/app'
   url.search = ''
   return NextResponse.redirect(url)
 }
@@ -31,12 +36,12 @@ export async function middleware(request) {
     cookieSerializeOptions: authConfig.cookieSerializeOptions,
     cookieSignatureKeys: authConfig.cookieSignatureKeys,
     serviceAccount: authConfig.serviceAccount,
-    handleValidToken: async () => {
+    handleValidToken: async (_, headers) => {
       if (PUBLIC_PATHS.includes(request.nextUrl.pathname)) {
         return redirectToHome(request)
       }
 
-      return NextResponse.next()
+      return NextResponse.next({ request: { headers } })
     },
     handleInvalidToken: async () => {
       return redirectToLogin(request)
@@ -49,5 +54,10 @@ export async function middleware(request) {
 }
 
 export const config = {
-  matcher: ['/app/:path*', '/api/login', '/api/logout'],
+  matcher: [
+    '/',
+    '/((?!_next|favicon.ico|api|.*\\.).*)',
+    '/api/login',
+    '/api/logout',
+  ],
 }
