@@ -4,10 +4,25 @@ const nextConfig = {
   swcMinify: true,
   output: 'standalone',
   images: {
-    domains: [
-      'lh3.googleusercontent.com',
-      'tailwindui.com',
-      'avatars.githubusercontent.com',
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'avatars.githubusercontent.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'tailwindui.com',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
 }
