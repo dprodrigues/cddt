@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect } from 'react'
 import { onIdTokenChanged } from 'firebase/auth'
-import { useFirebaseAuth } from './firebase'
-import { AuthContext } from './context'
+import { useFirebaseAuth } from '../../auth/firebase'
+import { AuthContext } from '.'
 import { filterStandardClaims } from 'next-firebase-auth-edge/lib/auth/claims'
 
 function toUser(user, idTokenResult) {

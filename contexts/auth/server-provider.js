@@ -1,7 +1,7 @@
 import { getTokens } from 'next-firebase-auth-edge/lib/next/tokens'
 import { cookies } from 'next/headers'
-import { AuthProvider } from './client-auth-provider'
-import { authConfig } from '../config/server'
+import { AuthProvider } from './client-provider'
+import { authConfig } from '../../config/server'
 import { filterStandardClaims } from 'next-firebase-auth-edge/lib/auth/claims'
 
 const mapTokensToUser = ({ decodedToken }) => {

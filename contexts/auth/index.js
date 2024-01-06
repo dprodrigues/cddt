@@ -2,9 +2,9 @@
 
 import { createContext, useContext } from 'react'
 
-export const AuthContext = createContext()
+const AuthContext = createContext()
 
-export const useAuth = () => {
+const useAuth = () => {
   const context = useContext(AuthContext)
 
   if (!context) {
@@ -13,3 +13,5 @@ export const useAuth = () => {
 
   return context
 }
+
+export { AuthContext, useAuth }
