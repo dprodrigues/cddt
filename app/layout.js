@@ -1,4 +1,4 @@
-import { ServerAuthProvider } from '@/auth/server-auth-provider'
+import { ServerAuthProvider } from '@/contexts/auth/server-provider'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
 import '@/styles/global.css'
@@ -6,7 +6,11 @@ import '@/styles/global.css'
 export const metadata = {
   title: 'cddt',
   description: 'ToDo APP',
-  viewport: 'width=device-width, initial-scale=1',
+}
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
 }
 
 export default function RootLayout({ children }) {
