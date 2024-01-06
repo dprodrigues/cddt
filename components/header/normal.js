@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { Login } from './login'
-import { useAuth } from '@/auth/context'
+import { useAuth } from '@/contexts/auth'
 
 const UserSkeleton = () => (
   <div role="status" className="flex items-center max-w-sm animate-pulse">

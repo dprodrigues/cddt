@@ -7,7 +7,7 @@ import { signOut } from 'firebase/auth'
 import { useFirebaseAuth } from '@/auth/firebase'
 import Link from 'next/link'
 
-import { useAuth } from '@/auth/context'
+import { useAuth } from '@/contexts/auth'
 
 export const User = () => {
   const router = useRouter()
