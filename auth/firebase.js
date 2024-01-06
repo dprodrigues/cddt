@@ -1,10 +1,6 @@
-import { getApp, getApps, initializeApp } from 'firebase/app'
 import { connectAuthEmulator, getAuth } from 'firebase/auth'
-import { clientConfig } from '../config/client'
-
-const getFirebaseApp = (options) => {
-  return !getApps().length ? initializeApp(options) : getApp()
-}
+import { getFirebaseApp } from '@/lib/firebaseApp'
+import { clientConfig } from '@/config/client'
 
 export const useFirebaseAuth = () => {
   const getFirebaseAuth = () => {
