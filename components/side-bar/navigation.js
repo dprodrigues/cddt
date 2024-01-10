@@ -1,12 +1,17 @@
 'use client'
 
 import Link from 'next/link'
-import { FaUser, FaCog, FaSignOutAlt } from 'react-icons/fa'
+import { FaUser, FaCog, FaSignOutAlt, FaHome } from 'react-icons/fa'
 import { signOut } from 'firebase/auth'
 import { useFirebaseAuth } from '@/auth/firebase'
 import { className } from './style'
 
 const items = [
+  {
+    label: 'Home',
+    href: '/app',
+    icon: FaHome,
+  },
   {
     label: 'Profile',
     href: '/app/profile',
@@ -19,7 +24,7 @@ const items = [
   },
 ]
 
-export const Header = () => {
+export const Navigation = () => {
   const { getFirebaseAuth } = useFirebaseAuth()
 
   const handleSignOut = async () => {

@@ -2,7 +2,15 @@
 
 import { useNotes } from '@/contexts/notes'
 import { className } from './style'
-import { FaRegSquare } from 'react-icons/fa'
+import { FaCircle, FaCircleNotch } from 'react-icons/fa'
+
+const Icon = ({ selected }) => {
+  if (selected) {
+    return <FaCircle className={className.icon} />
+  }
+
+  return <FaCircleNotch className={className.icon} />
+}
 
 export const Files = () => {
   const { dispatch, state } = useNotes()
@@ -12,7 +20,7 @@ export const Files = () => {
   }
 
   return (
-    <ul className="text-sm">
+    <ul className="text-sm overflow-x-hidden overflow-y-scroll">
       {state.notes.map((note) => (
         <li
           key={note.id}
@@ -20,7 +28,7 @@ export const Files = () => {
           onClick={() => handleClick(note)}
         >
           <div className={className.item}>
-            <FaRegSquare className={className.icon} />
+            <Icon selected={state.selected?.id === note.id} />
 
             <span className="ms-3">{note.title}</span>
           </div>
