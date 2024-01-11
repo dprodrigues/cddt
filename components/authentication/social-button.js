@@ -1,16 +1,35 @@
+import styled from 'styled-components'
+
+const Button = styled.button`
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  border: 1px solid rgb(243, 244, 246);
+  color: rgb(91, 33, 182);
+  display: inline-flex;
+  font-weight: 500;
+  justify-content: center;
+  line-height: 1;
+  padding: 1rem 1.25rem;
+  width: 100%;
+`
+
+const Label = styled.p`
+  color: rgb(17, 24, 39);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  margin-top: 0.25rem;
+  text-align: center;
+  width: 100%;
+`
+
 export const SocialButton = ({ label, icon, provider, onLogin }) => {
   return (
-    <div className="w-full group">
-      <button
-        onClick={onLogin(provider)}
-        className="w-full inline-flex items-center justify-center text-violet-800 group-hover:text-violet-700 font-medium leading-none bg-white rounded-lg shadow-sm group-hover:shadow-lg py-4 px-5 border border-gray-100 transform-gpu group-hover:-translate-y-0.5 transition-all duration-150"
-      >
-        {icon}
+    <Button onClick={onLogin(provider)}>
+      {icon}
 
-        <p className="w-full mt-1 text text-center text-sm font-medium text-gray-900">
-          {label}
-        </p>
-      </button>
-    </div>
+      <Label>{label}</Label>
+    </Button>
   )
 }

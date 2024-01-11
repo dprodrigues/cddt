@@ -1,5 +1,8 @@
 'use client'
+
 import { usePathname } from 'next/navigation'
+import Header from '@/components/header'
+import { Container, Modal, Title } from '@/styles/auth'
 
 export default function LayoutAuth({ children }) {
   const pathname = usePathname()
@@ -9,32 +12,15 @@ export default function LayoutAuth({ children }) {
 
   return (
     <>
-      <div className="auth-container flex items-center justify-center px-4 sm:px-6 lg:px-8">
-        <div className="box w-full max-w-md flex items-center justify-center flex-col space-y-4 bg-white border-gray-200 shadow-2xl rounded-lg p-8">
-          <h2 className="mb-3 text-center text-2xl font-bold text-gray-900">
-            {title}
-          </h2>
+      <Header />
+
+      <Container>
+        <Modal>
+          <Title>{title}</Title>
 
           {children}
-        </div>
-      </div>
-
-      <style jsx scoped>
-        {`
-          .auth-container {
-            background-image: url(/svgs/auth-page-background.svg);
-            background-repeat: no-repeat;
-            background-position: bottom right;
-            height: calc(100vh - 4.5rem);
-          }
-
-          .box {
-            background: #c4c4c430;
-            max-width: 40vw;
-            width: 100%;
-          }
-        `}
-      </style>
+        </Modal>
+      </Container>
     </>
   )
 }

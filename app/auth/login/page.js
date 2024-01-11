@@ -1,5 +1,5 @@
-import { LoginPage as ClientLoginPage } from './LoginPage'
+import { AuthPage } from '../AuthPage'
 
 export default function Login() {
-  return <ClientLoginPage />
+  return <AuthPage />
 }

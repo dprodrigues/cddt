@@ -6,7 +6,7 @@ import {
   getGoogleProvider,
   getGithubProvider,
   getTwitterProvider,
-} from '../firebase'
+} from './firebase'
 import SocialButtons from '@/components/authentication/social-buttons'
 import { useFirebaseAuth } from '@/auth/firebase'
 
@@ -23,7 +23,7 @@ const login = async (getFirebaseAuth, provider) => {
   })
 }
 
-export function LoginPage() {
+export function AuthPage() {
   const router = useRouter()
   const params = useSearchParams()
   const { getFirebaseAuth } = useFirebaseAuth()

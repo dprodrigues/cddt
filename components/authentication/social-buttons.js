@@ -1,9 +1,17 @@
-import { FaGoogle, FaGithub, FaTwitter } from 'react-icons/fa'
+import styled from 'styled-components'
+import { FaGoogle, FaGithub } from 'react-icons/fa'
 import { SocialButton } from './social-button'
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+`
 
 export default function SocialButtons({ providers, onLogin }) {
   return (
-    <div className="flex w-full flex-col space-y-4">
+    <Container>
       <SocialButton
         label="Google"
         icon={<FaGoogle />}
@@ -17,6 +25,6 @@ export default function SocialButtons({ providers, onLogin }) {
         provider={providers.github}
         onLogin={onLogin}
       />
-    </div>
+    </Container>
   )
 }

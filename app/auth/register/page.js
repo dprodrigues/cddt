@@ -1,5 +1,5 @@
-import { RegisterPage } from './RegisterPage'
+import { AuthPage } from '../AuthPage'
 
 export default function Register() {
-  return <RegisterPage />
+  return <AuthPage />
 }
