@@ -1,7 +1,16 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import { Container } from '@/components/container'
+'use client'
+
 import Header from '@/components/header'
+import Footer from '@/components/footer'
+import {
+  Container,
+  Title,
+  Description,
+  Image,
+  LinksContainer,
+  GetStarted,
+  LearnMore,
+} from '@/styles/home'
 
 export default function Home() {
   return (
@@ -10,30 +19,23 @@ export default function Home() {
 
       <Container>
         <div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 text-center md:text-left">
-            Organize Your Life, One Note at a Time.
-          </h1>
+          <Title>Organize Your Life, One Note at a Time.</Title>
 
-          <p className="mt-6 text-lg leading-8 text-gray-600 text-center md:text-left">
+          <Description>
             Empower Your Productivity: Your ultimate task manager and
             note-taking app for enhanced focus and organization.
-          </p>
+          </Description>
 
-          <div className="mt-10 flex items-center justify-center md:justify-start gap-x-6">
-            <Link
-              href="/auth/register"
-              className="rounded-md bg-violet-800 hover:bg-violet-700 active:bg-violet-900 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
-            >
-              Get started for free
-            </Link>
+          <LinksContainer>
+            <GetStarted href="/auth/register">Get started for free</GetStarted>
 
-            <Link
+            <LearnMore
               href="/about"
               className="text-sm font-semibold leading-6 text-gray-900"
             >
               Learn more <span aria-hidden="true">→</span>
-            </Link>
-          </div>
+            </LearnMore>
+          </LinksContainer>
         </div>
 
         <Image
@@ -44,6 +46,8 @@ export default function Home() {
           width={500}
         />
       </Container>
+
+      <Footer />
     </>
   )
 }

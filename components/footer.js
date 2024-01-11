@@ -1,5 +1,13 @@
 'use client'
+
+import NextLink from 'next/link'
 import { usePathname } from 'next/navigation'
+import styled from 'styled-components'
+
+const Container = styled.footer`
+  text-align: center;
+  padding: 1rem 0;
+`
 
 export default function Footer() {
   const pathname = usePathname()
@@ -9,11 +17,15 @@ export default function Footer() {
   }
 
   return (
-    <footer className="text-center py-4">
+    <Container>
       Made with ♥ by{' '}
-      <a href="https://github.com/dprodrigues" target="_blank" rel="noopener">
+      <NextLink
+        href="https://github.com/dprodrigues"
+        target="_blank"
+        rel="noopener"
+      >
         Daniel Rodrigues
-      </a>
-    </footer>
+      </NextLink>
+    </Container>
   )
 }
