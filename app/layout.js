@@ -1,5 +1,4 @@
 import { ServerAuthProvider } from '@/contexts/auth/server-provider'
-import '@/styles/global.css'
 
 export const metadata = {
   title: 'cddt',
