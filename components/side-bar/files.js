@@ -1,16 +1,8 @@
 'use client'
 
-import { useNotes } from '@/contexts/notes'
-import { className } from './style'
 import { FaCircle, FaCircleNotch } from 'react-icons/fa'
-
-const Icon = ({ selected }) => {
-  if (selected) {
-    return <FaCircle className={className.icon} />
-  }
-
-  return <FaCircleNotch className={className.icon} />
-}
+import { useNotes } from '@/contexts/notes'
+import { List, Button } from './styles'
 
 export const Files = () => {
   const { dispatch, state } = useNotes()
@@ -20,20 +12,20 @@ export const Files = () => {
   }
 
   return (
-    <ul className="text-sm overflow-x-hidden overflow-y-scroll">
-      {state.notes.map((note) => (
-        <li
-          key={note.id}
-          className="cursor-pointer"
-          onClick={() => handleClick(note)}
-        >
-          <div className={className.item}>
-            <Icon selected={state.selected?.id === note.id} />
+    <List>
+      {state.notes.map((note) => {
+        const Icon = state.selected?.id === note.id ? FaCircle : FaCircleNotch
 
-            <span className="ms-3">{note.title}</span>
-          </div>
-        </li>
-      ))}
-    </ul>
+        return (
+          <li key={note.id}>
+            <Button onClick={() => handleClick(note)}>
+              <Icon />
+
+              <span className="ms-3">{note.title}</span>
+            </Button>
+          </li>
+        )
+      })}
+    </List>
   )
 }

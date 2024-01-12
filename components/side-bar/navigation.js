@@ -1,10 +1,10 @@
 'use client'
 
-import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { FaUser, FaCog, FaSignOutAlt, FaHome } from 'react-icons/fa'
 import { signOut } from 'firebase/auth'
 import { useFirebaseAuth } from '@/auth/firebase'
-import { className } from './style'
+import { List, Link, Button } from './styles'
 
 const items = [
   {
@@ -26,6 +26,7 @@ const items = [
 
 export const Navigation = () => {
   const { getFirebaseAuth } = useFirebaseAuth()
+  const router = useRouter()
 
   const handleSignOut = async () => {
     await signOut(getFirebaseAuth())
@@ -35,11 +36,11 @@ export const Navigation = () => {
   }
 
   return (
-    <ul className="font-medium text-sm">
+    <List>
       {items.map(({ label, href, icon: Icon }) => (
         <li key={label}>
-          <Link href={href} className={className.item}>
-            <Icon className={className.icon} />
+          <Link href={href}>
+            <Icon />
 
             <span className="ms-3">{label}</span>
           </Link>
@@ -47,12 +48,12 @@ export const Navigation = () => {
       ))}
 
       <li>
-        <button className={className.item} onClick={handleSignOut}>
-          <FaSignOutAlt className={className.icon} />
+        <Button onClick={handleSignOut}>
+          <FaSignOutAlt />
 
           <span className="ms-3">Sign out</span>
-        </button>
+        </Button>
       </li>
-    </ul>
+    </List>
   )
 }

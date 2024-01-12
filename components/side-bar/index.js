@@ -1,17 +1,30 @@
+'use client'
+
+import styled from 'styled-components'
 import { Navigation } from './navigation'
 import { Files } from './files'
 import { User } from './user'
 
+const Aside = styled.aside`
+  background-color: rgb(249, 250, 251);
+  border-right: 1px solid rgb(243, 244, 246);
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  height: 100%;
+  overflow-y: auto;
+  padding: 1.5rem 1rem;
+  width: 16rem;
+`
+
 export const SideBar = () => {
   return (
-    <aside className="w-64 h-screen" aria-label="Sidebar">
-      <div className="h-full px-4 py-6 space-y-10 overflow-y-auto bg-gray-50 border-r border-gray-100">
-        <User />
+    <Aside>
+      <User />
 
-        <Navigation />
+      <Navigation />
 
-        <Files />
-      </div>
-    </aside>
+      <Files />
+    </Aside>
   )
 }
