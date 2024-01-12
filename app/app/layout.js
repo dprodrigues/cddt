@@ -1,14 +1,15 @@
 import { SideBar } from '@/components/side-bar'
 import { ServerNotesProvider } from '@/contexts/notes/server-provider'
+import { Container } from '@/styles/app'
 
 export default function RootLayout({ children }) {
   return (
     <ServerNotesProvider>
-      <div className="flex">
+      <Container>
         <SideBar />
 
         {children}
-      </div>
+      </Container>
     </ServerNotesProvider>
   )
 }
