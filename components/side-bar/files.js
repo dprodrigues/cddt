@@ -5,7 +5,10 @@ import { useNotes } from '@/contexts/notes'
 import { List, Button } from './styles'
 
 export const Files = () => {
-  const { dispatch, state } = useNotes()
+  const {
+    dispatch,
+    state: { notes, selected },
+  } = useNotes()
 
   const handleClick = (note) => {
     dispatch({ type: 'SET_SELECTED_NOTE', value: note })
@@ -13,8 +16,8 @@ export const Files = () => {
 
   return (
     <List>
-      {state.notes.map((note) => {
-        const Icon = state.selected?.id === note.id ? FaCircle : FaCircleNotch
+      {notes.map((note) => {
+        const Icon = selected?.id === note.id ? FaCircle : FaCircleNotch
 
         return (
           <li key={note.id}>

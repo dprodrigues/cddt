@@ -2,27 +2,29 @@
 
 import { useState } from 'react'
 import { useNotes } from '@/contexts/notes'
+import MDEditor from '@uiw/react-md-editor'
 
 const AppPage = () => {
-  const { state } = useNotes()
+  const {
+    state: { selected },
+  } = useNotes()
   const [value, setValue] = useState('')
 
-  if (!state.selected?.id) {
+  if (!selected?.id) {
     return null
   }
 
+  if (!value) {
+    setValue(`# ${selected.title}\n\n${selected.content}`)
+  }
+
   return (
-    <>
-      <div className="h-appFull flex">
-        <div>
-          <h2>{state.selected.title}</h2>
-
-          <textarea value={value} onChange={(e) => setValue(e.target.value)} />
-        </div>
-      </div>
-
-      <article className="prose prose-slate">{markdown}</article>
-    </>
+    <MDEditor
+      value={value}
+      onChange={setValue}
+      height="100%"
+      style={{ height: '100%', width: 'calc(100% - 16rem)' }}
+    />
   )
 }
 
