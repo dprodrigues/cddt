@@ -1,6 +1,6 @@
 import { ServerAuthProvider } from '@/contexts/auth/server-provider'
-import { StyledComponentsRegistry } from '@/lib/registry'
-import '@/styles/reset.css'
+import { Theme } from '@radix-ui/themes'
+import '@radix-ui/themes/styles.css'
 
 export const metadata = {
   title: 'cddt',
@@ -12,18 +12,16 @@ export const viewport = {
   initialScale: 1,
 }
 
-const RootLayout = ({ children }) => {
+export default function RootLayout({ children }) {
   return (
     <html lang="en" data-color-mode="light">
       <body>
-        <StyledComponentsRegistry>
-          <ServerAuthProvider>
+        <ServerAuthProvider>
+          <Theme>
             <main>{children}</main>
-          </ServerAuthProvider>
-        </StyledComponentsRegistry>
+          </Theme>
+        </ServerAuthProvider>
       </body>
     </html>
   )
 }
-
-export default RootLayout

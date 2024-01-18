@@ -2,7 +2,7 @@
 
 import { usePathname } from 'next/navigation'
 import Header from '@/components/header'
-import { Container, Modal, Title } from '@/styles/auth'
+// import { Container, Modal, Title } from '@/styles/auth'
 
 export default function LayoutAuth({ children }) {
   const pathname = usePathname()
@@ -14,13 +14,13 @@ export default function LayoutAuth({ children }) {
     <>
       <Header />
 
-      <Container>
-        <Modal>
-          <Title>{title}</Title>
+      <div>
+        <div>
+          <div>{title}</div>
 
           {children}
-        </Modal>
-      </Container>
+        </div>
+      </div>
     </>
   )
 }

@@ -3,28 +3,28 @@
 import { useState } from 'react'
 import { useNotes } from '@/contexts/notes'
 import MDEditor from '@uiw/react-md-editor'
+// import { Content, Title } from '@/styles/app'
 
 const AppPage = () => {
   const {
     state: { selected },
   } = useNotes()
-  const [value, setValue] = useState('')
+  const [value, setValue] = useState(selected?.content)
 
   if (!selected?.id) {
     return null
   }
 
-  if (!value) {
-    setValue(`# ${selected.title}\n\n${selected.content}`)
-  }
+  // if (!value) {
+  //   setValue(`# ${selected.title}\n\n${selected.content}`)
+  // }
 
   return (
-    <MDEditor
-      value={value}
-      onChange={setValue}
-      height="100%"
-      style={{ height: '100%', width: 'calc(100% - 16rem)' }}
-    />
+    <>
+      {/* <Title>{selected?.title}</Title> */}
+
+      <MDEditor value={value} onChange={setValue} height="100%" />
+    </>
   )
 }
 

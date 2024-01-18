@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation'
 import { FaUser, FaCog, FaSignOutAlt, FaHome } from 'react-icons/fa'
 import { signOut } from 'firebase/auth'
 import { useFirebaseAuth } from '@/auth/firebase'
-import { List, Link, Button } from './styles'
+// import { List, Link, Button } from './styles'
 
 const items = [
   {
@@ -36,24 +36,24 @@ export const Navigation = () => {
   }
 
   return (
-    <List>
-      {items.map(({ label, href, icon: Icon }) => (
+    <>
+      {/* {items.map(({ label, href, icon: Icon }) => (
         <li key={label}>
           <Link href={href}>
             <Icon />
 
-            <span className="ms-3">{label}</span>
+            <span>{label}</span>
           </Link>
         </li>
-      ))}
+      ))} */}
 
       <li>
-        <Button onClick={handleSignOut}>
+        <button onClick={handleSignOut}>
           <FaSignOutAlt />
 
-          <span className="ms-3">Sign out</span>
-        </Button>
+          <span>Sign out</span>
+        </button>
       </li>
-    </List>
+    </>
   )
 }

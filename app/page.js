@@ -1,22 +1,23 @@
 'use client'
 
 import Header from '@/components/header'
-import Footer from '@/components/footer'
-import {
-  Container,
-  Title,
-  Description,
-  Image,
-  LinksContainer,
-  GetStarted,
-  LearnMore,
-} from '@/styles/home'
+// import Footer from '@/components/footer'
+// import {
+//   Container,
+//   Title,
+//   Description,
+//   Image,
+//   LinksContainer,
+//   GetStarted,
+//   LearnMore,
+// } from '@/styles/home'
 
 export default function Home() {
   return (
     <>
       <Header />
 
+      {/*
       <Container>
         <div>
           <Title>Organize Your Life, One Note at a Time.</Title>
@@ -48,6 +49,7 @@ export default function Home() {
       </Container>
 
       <Footer />
+*/}
     </>
   )
 }
