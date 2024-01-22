@@ -2,12 +2,7 @@
 
 import NextLink from 'next/link'
 import { usePathname } from 'next/navigation'
-import styled from 'styled-components'
-
-const Container = styled.footer`
-  text-align: center;
-  padding: 1rem 0;
-`
+import { Container } from '@radix-ui/themes'
 
 export default function Footer() {
   const pathname = usePathname()
