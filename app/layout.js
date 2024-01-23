@@ -1,5 +1,6 @@
 import { ServerAuthProvider } from '@/contexts/auth/server-provider'
-import { StyledComponentsRegistry } from '@/lib/registry'
+import { Theme } from '@radix-ui/themes'
+import '@radix-ui/themes/styles.css'
 import '@/styles/reset.css'
 
 export const metadata = {
@@ -14,13 +15,13 @@ export const viewport = {
 
 const RootLayout = ({ children }) => {
   return (
-    <html lang="en" data-color-mode="light">
+    <html lang="en" data-color-mode="light" suppressHydrationWarning>
       <body>
-        <StyledComponentsRegistry>
-          <ServerAuthProvider>
+        <ServerAuthProvider>
+          <Theme appearance="light" accentColor="violet" radius="large">
             <main>{children}</main>
-          </ServerAuthProvider>
-        </StyledComponentsRegistry>
+          </Theme>
+        </ServerAuthProvider>
       </body>
     </html>
   )
