@@ -1,0 +1,10 @@
+.home-art {
+  max-width: 28rem;
+  width: 100%;
+}
+
+@media (min-width: 1280px) {
+  .home-art {
+    max-width: 32rem;
+  }
+}

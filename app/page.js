@@ -1,50 +1,73 @@
 'use client'
 
+import Image from 'next/image'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
-import {
-  Container,
-  Title,
-  Description,
-  Image,
-  LinksContainer,
-  GetStarted,
-  LearnMore,
-} from '@/styles/home'
+import { Button, Container, Flex, Heading, Text } from '@radix-ui/themes'
+import { useRouter } from 'next/navigation'
+import '@/styles/home.css'
 
 export default function Home() {
+  const router = useRouter()
+
+  function handleSignup() {
+    router.push('/auth/signup')
+  }
+
+  function handleAbout() {
+    router.push('/about')
+  }
+
   return (
     <>
       <Header />
 
-      <Container>
-        <div>
-          <Title>Organize Your Life, One Note at a Time.</Title>
+      <Container px={{ initial: 6, lg: 0 }}>
+        <Flex
+          pt="8"
+          pb="9"
+          gap="4"
+          align="center"
+          direction={{ initial: 'column', md: 'row' }}
+        >
+          <Flex direction="column" justify="center" height="100%">
+            <Heading size={{ initial: 8, md: 9 }}>
+              Organize Your Life, One Note at a Time.
+            </Heading>
 
-          <Description>
-            Empower Your Productivity: Your ultimate task manager and
-            note-taking app for enhanced focus and organization.
-          </Description>
-
-          <LinksContainer>
-            <GetStarted href="/auth/register">Get started for free</GetStarted>
-
-            <LearnMore
-              href="/about"
-              className="text-sm font-semibold leading-6 text-gray-900"
+            <Text
+              as="p"
+              mt={{ initial: 2, md: 6 }}
+              size={{ initial: 3, md: 4 }}
             >
-              Learn more <span aria-hidden="true">→</span>
-            </LearnMore>
-          </LinksContainer>
-        </div>
+              Empower Your Productivity: Your ultimate task manager and
+              note-taking app for enhanced focus and organization.
+            </Text>
 
-        <Image
-          className="w-auto max-w-md lg:max-w-lg lg:-mr-8 z-0"
-          src="/svgs/home-art.svg"
-          alt="logo"
-          height={500}
-          width={500}
-        />
+            <Flex mt="5" gap="4">
+              <Button size="3" onClick={handleSignup}>
+                Get started for free
+              </Button>
+
+              <Button
+                size="3"
+                variant="outline"
+                style={{ boxShadow: 'none' }}
+                onClick={handleAbout}
+              >
+                Learn more <span aria-hidden="true">→</span>
+              </Button>
+            </Flex>
+          </Flex>
+
+          <Image
+            className="home-art"
+            src="/svgs/home-art.svg"
+            alt="Home art"
+            height={512}
+            width={512}
+          />
+        </Flex>
       </Container>
 
       <Footer />
