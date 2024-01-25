@@ -1,37 +1,54 @@
 'use client'
 
-import { usePathname } from 'next/navigation'
+import NextImage from 'next/image'
 import NextLink from 'next/link'
-import { Container, Wrapper, Logo, Login, Register } from './styles'
+import { usePathname, useRouter } from 'next/navigation'
+import { Button, Container, Flex } from '@radix-ui/themes'
 
 const Header = () => {
+  const router = useRouter()
   const pathname = usePathname()
+
+  function handleLogin() {
+    router.push('/auth/login')
+  }
+
+  function handleSignup() {
+    router.push('/auth/signup')
+  }
 
   if (pathname?.includes('auth')) {
     return (
-      <Container>
-        <Wrapper>
-          <NextLink href="/">
-            <Logo src="/svgs/logo.svg" alt="logo" height={50} width={50} />
-          </NextLink>
-        </Wrapper>
+      <Container style={{ padding: '1rem 0' }}>
+        <NextLink href="/">
+          <NextImage src="/svgs/logo.svg" alt="logo" height={34} width={128} />
+        </NextLink>
       </Container>
     )
   }
 
   return (
-    <Container $hasBorder>
-      <Wrapper>
+    <Container style={{ padding: '1rem 0' }}>
+      <Flex justify="between">
         <NextLink href="/">
-          <Logo src="/svgs/logo.svg" alt="logo" height={50} width={50} />
+          <NextImage src="/svgs/logo.svg" alt="logo" height={34} width={128} />
         </NextLink>
 
-        <div className="flex items-center justify-end">
-          <Login href="/auth/login">Login</Login>
+        <Flex gap="4">
+          <Button
+            size="3"
+            variant="outline"
+            style={{ boxShadow: 'none' }}
+            onClick={handleLogin}
+          >
+            Log in
+          </Button>
 
-          <Register href="/auth/register">Register</Register>
-        </div>
-      </Wrapper>
+          <Button size="3" onClick={handleSignup}>
+            Sign up
+          </Button>
+        </Flex>
+      </Flex>
     </Container>
   )
 }
