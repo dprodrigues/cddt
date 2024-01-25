@@ -239,3 +239,7 @@ video {
 [hidden] {
   display: none;
 }
+
+.radix-themes {
+  --cursor-button: pointer;
+}
