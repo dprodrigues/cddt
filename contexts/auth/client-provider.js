@@ -31,13 +31,13 @@ export const AuthProvider = ({ defaultUser, children }) => {
     setUser(toUser(firebaseUser, idTokenResult))
   }
 
-  const registerChangeListener = async () => {
+  const signupChangeListener = async () => {
     const auth = getFirebaseAuth()
     return onIdTokenChanged(auth, handleIdTokenChanged)
   }
 
   useEffect(() => {
-    const unsubscribePromise = registerChangeListener()
+    const unsubscribePromise = signupChangeListener()
 
     return () => {
       unsubscribePromise.then((unsubscribe) => unsubscribe())

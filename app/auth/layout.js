@@ -2,13 +2,13 @@
 
 import { usePathname } from 'next/navigation'
 import Header from '@/components/header'
-import { Container, Modal, Title } from '@/styles/auth'
+import { Container, Modal, Title } from '@/styles/deprecated/auth'
 
 export default function LayoutAuth({ children }) {
   const pathname = usePathname()
-  const title = pathname.includes('register')
-    ? 'Register on cddt. :D'
-    : 'Login with social media'
+  const title = pathname.includes('signup')
+    ? 'Sign up on cddt. :D'
+    : 'Log in with social media'
 
   return (
     <>

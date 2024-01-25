@@ -4,7 +4,8 @@ import { authConfig } from './config/server'
 
 const PUBLIC_PATHS = [
   '/',
-  '/auth/register',
+  '/about',
+  '/auth/signup',
   '/auth/login',
   '/auth/reset-password',
 ]

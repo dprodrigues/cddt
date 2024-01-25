@@ -1,5 +1,5 @@
 import { AuthPage } from '../AuthPage'
 
-export default function Register() {
+export default function Signup() {
   return <AuthPage />
 }
