@@ -19,7 +19,7 @@ const Header = () => {
 
   if (pathname?.includes('auth')) {
     return (
-      <Container style={{ padding: '1rem 0' }}>
+      <Container px={{ initial: 6, lg: 0 }} py="4">
         <NextLink href="/">
           <NextImage src="/svgs/logo.svg" alt="logo" height={34} width={128} />
         </NextLink>
@@ -28,7 +28,7 @@ const Header = () => {
   }
 
   return (
-    <Container style={{ padding: '1rem 0' }}>
+    <Container px={{ initial: 6, lg: 0 }} py="4">
       <Flex justify="between">
         <NextLink href="/">
           <NextImage src="/svgs/logo.svg" alt="logo" height={34} width={128} />
