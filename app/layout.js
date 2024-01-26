@@ -2,6 +2,7 @@ import { ServerAuthProvider } from '@/contexts/auth/server-provider'
 import { Theme } from '@radix-ui/themes'
 import '@radix-ui/themes/styles.css'
 import '@/styles/reset.css'
+import '@/styles/main.css'
 
 export const metadata = {
   title: 'cddt',
@@ -18,7 +19,7 @@ const RootLayout = ({ children }) => {
     <html lang="en" data-color-mode="light" suppressHydrationWarning>
       <body>
         <ServerAuthProvider>
-          <Theme appearance="light" accentColor="violet" radius="large">
+          <Theme accentColor="gray" radius="large">
             <main>{children}</main>
           </Theme>
         </ServerAuthProvider>

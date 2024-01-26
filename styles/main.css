@@ -1,0 +1,35 @@
+.radix-themes {
+  --cursor-button: pointer;
+}
+
+:root {
+  --gray-1: #C9C9CA;
+  --gray-2: #BEBEBF;
+  --gray-3: #B1B1B2;
+  --gray-4: #979699;
+  --gray-5: #828184;
+  --gray-6: #67666B;
+  --gray-7: #47464C;
+  --gray-8: #343339;
+  --gray-9: #211F26;
+  --gray-10: #1E1C23;
+  --gray-11: #1B1920;
+  --gray-12: #19171D;
+  --gray-a1: #00000003;
+  --gray-a2: #00000006;
+  --gray-a3: #0000000f;
+  --gray-a4: #00000017;
+  --gray-a5: #0000001f;
+  --gray-a6: #00000026;
+  --gray-a7: #00000031;
+  --gray-a8: #00000044;
+  --gray-a9: #00000072;
+  --gray-a10: #0000007c;
+  --gray-a11: #0000009b;
+  --gray-a12: #000000df;
+}
+
+.rt-BaseButton:where(.rt-variant-outline) {
+  box-shadow: inset 0 0 0 1px var(--gray-9);
+  color: var(--gray-9);
+}
