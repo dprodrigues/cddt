@@ -1,26 +1,29 @@
 'use client'
 
 import { usePathname } from 'next/navigation'
+import { Box, Flex, Heading } from '@radix-ui/themes'
 import Header from '@/components/header'
-import { Container, Modal, Title } from '@/styles/deprecated/auth'
+import '@/styles/auth.css'
 
 export default function LayoutAuth({ children }) {
   const pathname = usePathname()
   const title = pathname.includes('signup')
-    ? 'Sign up on cddt. :D'
+    ? 'Create your account :D'
     : 'Log in with social media'
 
   return (
     <>
       <Header />
 
-      <Container>
-        <Modal>
-          <Title>{title}</Title>
+      <Box className="auth__container">
+        <Flex className="auth__modal" direction="column" align="center" p="9">
+          <Heading as="h2" mb="8">
+            {title}
+          </Heading>
 
           {children}
-        </Modal>
-      </Container>
+        </Flex>
+      </Box>
     </>
   )
 }

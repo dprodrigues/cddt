@@ -1,17 +1,10 @@
-import styled from 'styled-components'
+import { Flex } from '@radix-ui/themes'
 import { FaGoogle, FaGithub } from 'react-icons/fa'
 import { SocialButton } from './social-button'
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  width: 100%;
-`
-
 export default function SocialButtons({ providers, onLogin }) {
   return (
-    <Container>
+    <Flex direction="column" gap="4" width="100%">
       <SocialButton
         label="Google"
         icon={<FaGoogle />}
@@ -25,6 +18,6 @@ export default function SocialButtons({ providers, onLogin }) {
         provider={providers.github}
         onLogin={onLogin}
       />
-    </Container>
+    </Flex>
   )
 }
