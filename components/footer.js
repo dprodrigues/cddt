@@ -12,7 +12,7 @@ export default function Footer() {
   }
 
   return (
-    <Container>
+    <Container style={{ textAlign: 'center' }}>
       Made with ♥ by{' '}
       <NextLink
         href="https://github.com/dprodrigues"
