@@ -32,7 +32,7 @@ export default function Home() {
         >
           <Flex direction="column" justify="center" height="100%">
             <Heading size={{ initial: 8, md: 9 }}>
-              Organize Your Life, One Note at a Time.
+              Organize your life, one note at a time.
             </Heading>
 
             <Text
@@ -40,7 +40,7 @@ export default function Home() {
               mt={{ initial: 2, md: 6 }}
               size={{ initial: 3, md: 4 }}
             >
-              Empower Your Productivity: Your ultimate task manager and
+              Empower your productivity: Your ultimate task manager and
               note-taking app for enhanced focus and organization.
             </Text>
 
