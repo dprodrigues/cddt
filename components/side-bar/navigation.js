@@ -1,10 +1,11 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 import { FaUser, FaCog, FaSignOutAlt, FaHome } from 'react-icons/fa'
 import { signOut } from 'firebase/auth'
+import { Button, Flex } from '@radix-ui/themes'
 import { useFirebaseAuth } from '@/auth/firebase'
-import { List, Link, Button } from './styles'
 
 const items = [
   {
@@ -24,36 +25,41 @@ const items = [
   },
 ]
 
-export const Navigation = () => {
+const buttonProps = {
+  variant: 'outline',
+  style: {
+    justifyContent: 'left',
+    boxShadow: 'none',
+  },
+}
+
+export default function Navigation() {
   const { getFirebaseAuth } = useFirebaseAuth()
   const router = useRouter()
 
-  const handleSignOut = async () => {
+  async function handleSignOut() {
     await signOut(getFirebaseAuth())
     await fetch('/api/logout', { method: 'GET' })
-
     router.push('/auth/login')
   }
 
   return (
-    <List>
+    <Flex direction="column">
       {items.map(({ label, href, icon: Icon }) => (
-        <li key={label}>
+        <Button {...buttonProps} key={label} asChild>
           <Link href={href}>
             <Icon />
 
             <span className="ms-3">{label}</span>
           </Link>
-        </li>
+        </Button>
       ))}
 
-      <li>
-        <Button onClick={handleSignOut}>
-          <FaSignOutAlt />
+      <Button {...buttonProps} onClick={handleSignOut}>
+        <FaSignOutAlt />
 
-          <span className="ms-3">Sign out</span>
-        </Button>
-      </li>
-    </List>
+        <span className="ms-3">Sign out</span>
+      </Button>
+    </Flex>
   )
 }
