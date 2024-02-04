@@ -1,15 +1,15 @@
-import { SideBar } from '@/components/side-bar'
-import { ServerNotesProvider } from '@/contexts/notes/server-provider'
-import { Container } from '@/styles/app'
+import { Flex } from '@radix-ui/themes'
+import SideBar from '@/components/side-bar'
+import { ServerProjectsProvider } from '@/contexts/projects/server-provider'
 
 export default function RootLayout({ children }) {
   return (
-    <ServerNotesProvider>
-      <Container>
+    <ServerProjectsProvider>
+      <Flex style={{ height: '100vh', width: '100vw' }}>
         <SideBar />
 
         {children}
-      </Container>
-    </ServerNotesProvider>
+      </Flex>
+    </ServerProjectsProvider>
   )
 }
