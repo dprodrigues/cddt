@@ -5,7 +5,7 @@ import NextLink from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { Button, Container, Flex } from '@radix-ui/themes'
 
-const Header = () => {
+export default function Header() {
   const router = useRouter()
   const pathname = usePathname()
 
@@ -59,5 +59,3 @@ const Header = () => {
     </Container>
   )
 }
-
-export default Header
