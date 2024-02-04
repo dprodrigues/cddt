@@ -1,16 +1,16 @@
 'use client'
 
 import { useReducer, useMemo } from 'react'
-import { NotesContext } from '.'
+import { ProjectsContext } from '.'
 
 const initialState = {
-  notes: [],
+  projects: [],
   selected: undefined,
 }
 
 const reducer = (state, action) => {
   switch (action?.type) {
-    case 'SET_SELECTED_NOTE': {
+    case 'SET_SELECTED_PROJECT': {
       return { ...state, selected: action.value }
     }
     default: {
@@ -19,14 +19,17 @@ const reducer = (state, action) => {
   }
 }
 
-export const NotesProvider = ({ children, notes }) => {
+export const ProjectsProvider = ({ children, projects }) => {
   const [state, dispatch] = useReducer(reducer, {
     ...initialState,
-    notes,
-    selected: notes?.length ? notes[0] : undefined,
+    projects,
   })
 
   const value = useMemo(() => ({ state, dispatch }), [state, dispatch])
 
-  return <NotesContext.Provider value={value}>{children}</NotesContext.Provider>
+  return (
+    <ProjectsContext.Provider value={value}>
+      {children}
+    </ProjectsContext.Provider>
+  )
 }
