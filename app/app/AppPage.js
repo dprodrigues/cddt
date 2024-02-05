@@ -1,31 +1,23 @@
 'use client'
 
-import { useState } from 'react'
-import { useNotes } from '@/contexts/notes'
-import MDEditor from '@uiw/react-md-editor'
+import { Box, Heading } from '@radix-ui/themes'
+import { useProjects } from '@/contexts/projects'
+import List from '@/components/list'
 
-const AppPage = () => {
+export default function App() {
   const {
     state: { selected },
-  } = useNotes()
-  const [value, setValue] = useState('')
+  } = useProjects()
 
   if (!selected?.id) {
     return null
   }
 
-  if (!value) {
-    setValue(`# ${selected.title}\n\n${selected.content}`)
-  }
-
   return (
-    <MDEditor
-      value={value}
-      onChange={setValue}
-      height="100%"
-      style={{ height: '100%', width: 'calc(100% - 16rem)' }}
-    />
+    <Box p="5" width="100%">
+      <Heading mb="9">{selected.title}</Heading>
+
+      <List type={selected.type} items={selected.items} />
+    </Box>
   )
 }
-
-export default AppPage
