@@ -20,10 +20,7 @@ const reducer = (state, action) => {
 }
 
 export const ProjectsProvider = ({ children, projects }) => {
-  const [state, dispatch] = useReducer(reducer, {
-    ...initialState,
-    projects,
-  })
+  const [state, dispatch] = useReducer(reducer, { ...initialState, projects })
 
   const value = useMemo(() => ({ state, dispatch }), [state, dispatch])
 
