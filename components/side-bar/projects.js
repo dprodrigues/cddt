@@ -1,21 +1,23 @@
 'use client'
 
 import { Button, Flex } from '@radix-ui/themes'
-import { FaCircle, FaCircleNotch } from 'react-icons/fa'
+import { FaCircle, FaCircleNotch, FaPlus } from 'react-icons/fa'
 import { useProjects } from '@/contexts/projects'
 
-function ProjectButton({ project, selected, onClick }) {
-  const Icon = selected ? FaCircle : FaCircleNotch
-
+function ProjectButton({ label, icon: Icon, onClick }) {
   return (
     <Button
-      onClick={() => onClick(project)}
+      onClick={onClick}
       variant="outline"
-      style={{ boxShadow: 'none', justifyContent: 'left' }}
+      style={{
+        boxShadow: 'none',
+        justifyContent: 'left',
+        textTransform: 'capitalize',
+      }}
     >
       <Icon />
 
-      <span className="ms-3">{project.title}</span>
+      <span className="ms-3">{label}</span>
     </Button>
   )
 }
@@ -32,14 +34,18 @@ export default function Projects() {
 
   return (
     <Flex direction="column">
-      {projects.map((project) => (
-        <ProjectButton
-          key={project.id}
-          project={project}
-          selected={selected?.id === project.id}
-          onClick={handleClick}
-        />
-      ))}
+      {projects.map((project) => {
+        const isSelected = selected?.id === project.id
+
+        return (
+          <ProjectButton
+            key={project.id}
+            label={project.title}
+            icon={isSelected ? FaCircle : FaCircleNotch}
+            onClick={() => handleClick(project)}
+          />
+        )
+      })}
     </Flex>
   )
 }

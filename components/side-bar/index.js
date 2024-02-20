@@ -4,6 +4,7 @@ import { Flex } from '@radix-ui/themes'
 import User from './user'
 import Navigation from './navigation'
 import Projects from './projects'
+import AddProject from './add-project'
 
 const flexStyle = {
   backgroundColor: 'rgb(249, 250, 251)',
@@ -25,7 +26,11 @@ export default function Sidebar() {
 
       <Navigation />
 
-      <Projects />
+      <div>
+        <Projects />
+
+        <AddProject />
+      </div>
     </Flex>
   )
 }
