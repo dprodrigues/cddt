@@ -1,28 +1,51 @@
+import { v4 as uuidv4 } from 'uuid'
 import { getTokens } from 'next-firebase-auth-edge/lib/next/tokens'
 import { cookies } from 'next/headers'
 import { db } from '@/lib/firebase'
 import { authConfig } from '@/config/server'
 import { NotesProvider } from './client-provider'
 
-export async function getUserNotes() {
+async function getUserID() {
   const tokens = await getTokens(cookies(), authConfig)
 
   if (!tokens) {
     throw new Error('Cannot get counter of unauthenticated user')
   }
 
-  const snapshot = await db
-    .collection('users')
-    .doc(tokens.decodedToken.uid)
-    .get()
+  return tokens.decodedToken.uid
+}
 
-  const userNotes = await snapshot.data()
+async function getUserDocument() {
+  const id = getUserID()
 
-  if (!userNotes) {
-    return []
+  return db.collection('users').doc(id)
+}
+
+async function getUser() {
+  const snapshot = await getUserDocument().get()
+
+  return {
+    data: snapshot.data(),
+    tokens,
   }
+}
 
-  return userNotes.notes.filter((note) => !note.finished)
+export async function getUserProjects() {
+  const { data } = await getUser()
+
+  return {
+    notes: data.notes,
+    tasks: data.tasks,
+  }
+}
+
+export async function createProject() {
+  // const { tokens } = await getUser()
+  const id = uuidv4()
+
+  // db.collection('users').doc(tokens.decodedToken.uid).update()
+  const snapshot = await getUserDocument().update()
+  // snapshot.update()
 }
 
 export async function ServerNotesProvider({ children }) {
