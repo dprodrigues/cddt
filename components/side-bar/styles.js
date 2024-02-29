@@ -1,13 +1,13 @@
-'use client'
+'use client';
 
-import NextLink from 'next/link'
-import styled, { css } from 'styled-components'
+import NextLink from 'next/link';
+import styled, { css } from 'styled-components';
 
 export const List = styled.ul`
   font-size: 0.875rem;
   font-weight: 500;
   line-height: 1.25rem;
-`
+`;
 
 const itemStyle = css`
   align-items: center;
@@ -27,12 +27,12 @@ const itemStyle = css`
   span {
     margin-inline-start: 0.75rem;
   }
-`
+`;
 
 export const Link = styled(NextLink)`
   ${itemStyle}
-`
+`;
 
 export const Button = styled.button`
   ${itemStyle}
-`
+`;

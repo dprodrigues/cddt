@@ -6,7 +6,7 @@ export const serverConfig = {
     clientEmail: process.env.FIREBASE_ADMIN_CLIENT_EMAIL,
     privateKey: process.env.FIREBASE_ADMIN_PRIVATE_KEY.replace(/\\n/g, '\n'),
   },
-}
+};
 
 export const authConfig = {
   apiKey: serverConfig.firebaseApiKey,
@@ -15,9 +15,9 @@ export const authConfig = {
   cookieSerializeOptions: {
     path: '/',
     httpOnly: true,
-    secure: serverConfig.useSecureCookies, // Set this to true on HTTPS environments
+    secure: serverConfig.useSecureCookies,
     sameSite: 'lax',
     maxAge: 12 * 60 * 60 * 24, // twelve days
   },
   serviceAccount: serverConfig.serviceAccount,
-}
+};

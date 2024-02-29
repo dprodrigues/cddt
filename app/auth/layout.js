@@ -1,15 +1,15 @@
-'use client'
+'use client';
 
-import { usePathname } from 'next/navigation'
-import { Box, Flex, Heading } from '@radix-ui/themes'
-import Header from '@/components/header'
-import '@/styles/auth.css'
+import { usePathname } from 'next/navigation';
+import { Box, Flex, Heading } from '@radix-ui/themes';
+import Header from '@/components/header';
+import '@/styles/auth.css';
 
 export default function LayoutAuth({ children }) {
-  const pathname = usePathname()
+  const pathname = usePathname();
   const title = pathname.includes('signup')
     ? 'Create your account :D'
-    : 'Log in with social media'
+    : 'Log in with social media';
 
   return (
     <>
@@ -25,5 +25,5 @@ export default function LayoutAuth({ children }) {
         </Flex>
       </Box>
     </>
-  )
+  );
 }

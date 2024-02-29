@@ -1,14 +1,14 @@
-'use client'
+'use client';
 
-import NextLink from 'next/link'
-import { usePathname } from 'next/navigation'
-import { Container } from '@radix-ui/themes'
+import NextLink from 'next/link';
+import { usePathname } from 'next/navigation';
+import { Container } from '@radix-ui/themes';
 
 export default function Footer() {
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   if (pathname.includes('auth')) {
-    return null
+    return null;
   }
 
   return (
@@ -22,5 +22,5 @@ export default function Footer() {
         Daniel Rodrigues
       </NextLink>
     </Container>
-  )
+  );
 }

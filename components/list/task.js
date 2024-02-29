@@ -1,3 +1,3 @@
 export default function Task() {
-  return <>task</>
+  return <>task</>;
 }

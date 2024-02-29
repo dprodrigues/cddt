@@ -1,11 +1,11 @@
-'use client'
+'use client';
 
-import { useRouter } from 'next/navigation'
-import Link from 'next/link'
-import { FaUser, FaCog, FaSignOutAlt, FaHome } from 'react-icons/fa'
-import { signOut } from 'firebase/auth'
-import { Button, Flex } from '@radix-ui/themes'
-import { useFirebaseAuth } from '@/auth/firebase'
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import { FaUser, FaCog, FaSignOutAlt, FaHome } from 'react-icons/fa';
+import { signOut } from 'firebase/auth';
+import { Button, Flex } from '@radix-ui/themes';
+import { useFirebaseAuth } from '@/lib/firebase/app';
 
 const items = [
   {
@@ -23,7 +23,7 @@ const items = [
     href: '/app/settings',
     icon: FaCog,
   },
-]
+];
 
 const buttonProps = {
   variant: 'outline',
@@ -31,16 +31,16 @@ const buttonProps = {
     justifyContent: 'left',
     boxShadow: 'none',
   },
-}
+};
 
 export default function Navigation() {
-  const { getFirebaseAuth } = useFirebaseAuth()
-  const router = useRouter()
+  const { getFirebaseAuth } = useFirebaseAuth();
+  const router = useRouter();
 
   async function handleSignOut() {
-    await signOut(getFirebaseAuth())
-    await fetch('/api/logout', { method: 'GET' })
-    router.push('/auth/login')
+    await signOut(getFirebaseAuth());
+    await fetch('/api/logout', { method: 'GET' });
+    router.push('/auth/login');
   }
 
   return (
@@ -61,5 +61,5 @@ export default function Navigation() {
         <span className="ms-3">Sign out</span>
       </Button>
     </Flex>
-  )
+  );
 }

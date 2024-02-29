@@ -1,4 +1,4 @@
-import { Button, Text } from '@radix-ui/themes'
+import { Button, Text } from '@radix-ui/themes';
 
 export const SocialButton = ({ label, icon, provider, onLogin }) => {
   return (
@@ -9,5 +9,5 @@ export const SocialButton = ({ label, icon, provider, onLogin }) => {
         {label}
       </Text>
     </Button>
-  )
-}
+  );
+};

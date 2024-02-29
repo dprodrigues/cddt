@@ -1,6 +1,6 @@
-import { Flex } from '@radix-ui/themes'
-import SideBar from '@/components/side-bar'
-import { ServerProjectsProvider } from '@/contexts/projects/server-provider'
+import { Flex } from '@radix-ui/themes';
+import SideBar from '@/components/side-bar';
+import { ServerProjectsProvider } from '@/contexts/projects/server-provider';
 
 export default function RootLayout({ children }) {
   return (
@@ -11,5 +11,5 @@ export default function RootLayout({ children }) {
         {children}
       </Flex>
     </ServerProjectsProvider>
-  )
+  );
 }

@@ -1,7 +1,7 @@
-'use client'
+'use client';
 
-import { Box, Flex, Heading } from '@radix-ui/themes'
-import Greetings from '@/components/greetings'
+import { Box, Flex, Heading } from '@radix-ui/themes';
+import Greetings from '@/components/greetings';
 
 export default function AppClient() {
   return (
@@ -10,5 +10,5 @@ export default function AppClient() {
         <Greetings />
       </Flex>
     </Box>
-  )
+  );
 }

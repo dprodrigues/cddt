@@ -1,21 +1,21 @@
-'use client'
+'use client';
 
-import Image from 'next/image'
-import Header from '@/components/header'
-import Footer from '@/components/footer'
-import { Button, Container, Flex, Heading, Text } from '@radix-ui/themes'
-import { useRouter } from 'next/navigation'
-import '@/styles/home.css'
+import Image from 'next/image';
+import Header from '@/components/header';
+import Footer from '@/components/footer';
+import { Button, Container, Flex, Heading, Text } from '@radix-ui/themes';
+import { useRouter } from 'next/navigation';
+import '@/styles/home.css';
 
 export default function Home() {
-  const router = useRouter()
+  const router = useRouter();
 
   function handleSignup() {
-    router.push('/auth/signup')
+    router.push('/auth/signup');
   }
 
   function handleAbout() {
-    router.push('/about')
+    router.push('/about');
   }
 
   return (
@@ -72,5 +72,5 @@ export default function Home() {
 
       <Footer />
     </>
-  )
+  );
 }

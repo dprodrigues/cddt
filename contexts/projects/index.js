@@ -1,15 +1,15 @@
-import { useContext, createContext } from 'react'
+import { useContext, createContext } from 'react';
 
-const ProjectsContext = createContext()
+const ProjectsContext = createContext();
 
 const useProjects = () => {
-  const context = useContext(ProjectsContext)
+  const context = useContext(ProjectsContext);
 
   if (!context) {
-    throw new Error('useProjects must be used within the ProjectsProvider')
+    throw new Error('useProjects must be used within the ProjectsProvider');
   }
 
-  return context
-}
+  return context;
+};
 
-export { ProjectsContext, useProjects }
+export { ProjectsContext, useProjects };

@@ -1,5 +1,5 @@
-import { AuthPage } from '../AuthPage'
+import { AuthPage } from '../AuthPage';
 
 export default function Signup() {
-  return <AuthPage />
+  return <AuthPage />;
 }

@@ -1,6 +1,6 @@
-import { Flex } from '@radix-ui/themes'
-import { FaGoogle, FaGithub } from 'react-icons/fa'
-import { SocialButton } from './social-button'
+import { Flex } from '@radix-ui/themes';
+import { FaGoogle, FaGithub } from 'react-icons/fa';
+import { SocialButton } from './social-button';
 
 export default function SocialButtons({ providers, onLogin }) {
   return (
@@ -19,5 +19,5 @@ export default function SocialButtons({ providers, onLogin }) {
         onLogin={onLogin}
       />
     </Flex>
-  )
+  );
 }

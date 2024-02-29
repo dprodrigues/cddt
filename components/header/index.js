@@ -1,20 +1,20 @@
-'use client'
+'use client';
 
-import NextImage from 'next/image'
-import NextLink from 'next/link'
-import { usePathname, useRouter } from 'next/navigation'
-import { Button, Container, Flex } from '@radix-ui/themes'
+import NextImage from 'next/image';
+import NextLink from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
+import { Button, Container, Flex } from '@radix-ui/themes';
 
 export default function Header() {
-  const router = useRouter()
-  const pathname = usePathname()
+  const router = useRouter();
+  const pathname = usePathname();
 
   function handleLogin() {
-    router.push('/auth/login')
+    router.push('/auth/login');
   }
 
   function handleSignup() {
-    router.push('/auth/signup')
+    router.push('/auth/signup');
   }
 
   if (pathname?.includes('auth')) {
@@ -31,7 +31,7 @@ export default function Header() {
           </NextLink>
         </Flex>
       </Container>
-    )
+    );
   }
 
   return (
@@ -57,5 +57,5 @@ export default function Header() {
         </Flex>
       </Flex>
     </Container>
-  )
+  );
 }

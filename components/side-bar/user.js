@@ -1,13 +1,13 @@
-'use client'
+'use client';
 
-import { Avatar, Flex, Text } from '@radix-ui/themes'
-import { useAuth } from '@/contexts/auth'
+import { Avatar, Flex, Text } from '@radix-ui/themes';
+import { useAuth } from '@/contexts/auth';
 
 export default function User() {
-  const { user } = useAuth()
+  const { user } = useAuth();
 
   if (!user) {
-    return null
+    return null;
   }
 
   return (
@@ -21,5 +21,5 @@ export default function User() {
         {user.displayName}
       </Text>
     </Flex>
-  )
+  );
 }
