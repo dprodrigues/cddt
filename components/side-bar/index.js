@@ -1,18 +1,29 @@
-'use client'
+'use client';
 
-import { Flex } from '@radix-ui/themes'
-import User from './user'
-import Navigation from './navigation'
-import Projects from './projects'
-import AddProject from './add-project'
+import { Flex } from '@radix-ui/themes';
+import User from './user';
+import Navigation from './navigation';
+import Projects from './projects';
+import AddProject from './add-project';
 
 const flexStyle = {
   backgroundColor: 'rgb(249, 250, 251)',
   borderRight: '1px solid rgb(243, 244, 246)',
   width: '16rem',
-}
+};
 
 export default function Sidebar() {
+  async function handleAddNewProject() {
+    fetch('/projects', { method: 'POST', body: {} })
+      .then((res) => res.json())
+      .then((json) => {
+        console.log('json:', json);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
   return (
     <Flex
       direction="column"
@@ -29,8 +40,8 @@ export default function Sidebar() {
       <div>
         <Projects />
 
-        <AddProject />
+        <AddProject onClick={handleAddNewProject} />
       </div>
     </Flex>
-  )
+  );
 }
