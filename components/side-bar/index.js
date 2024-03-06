@@ -5,6 +5,7 @@ import User from './user';
 import Navigation from './navigation';
 import Projects from './projects';
 import AddProject from './add-project';
+import { useProjects } from '@/contexts/projects';
 
 const flexStyle = {
   backgroundColor: 'rgb(249, 250, 251)',
@@ -13,15 +14,25 @@ const flexStyle = {
 };
 
 export default function Sidebar() {
-  async function handleAddNewProject() {
-    fetch('/projects', { method: 'POST', body: {} })
-      .then((res) => res.json())
-      .then((json) => {
-        console.log('json:', json);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+  const { dispatch } = useProjects();
+
+  async function addProject() {
+    try {
+      const response = await fetch('/projects', { method: 'POST', body: {} });
+      const data = await response.json();
+
+      if (!data?.projects?.length) {
+        return;
+      }
+
+      dispatch({ type: 'SET_PROJECTS', value: data.projects });
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async function handleAddProjectClick() {
+    await addProject();
   }
 
   return (
@@ -40,7 +51,7 @@ export default function Sidebar() {
       <div>
         <Projects />
 
-        <AddProject onClick={handleAddNewProject} />
+        <AddProject onClick={handleAddProjectClick} />
       </div>
     </Flex>
   );

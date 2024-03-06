@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
-import { createProject, getUserProjects } from '@/lib/firebase/firestore';
+import { createNewProject, getUserProjects } from '@/lib/firebase/firestore';
 
-async function GET(req) {
+async function GET() {
   try {
     const projects = await getUserProjects();
 
@@ -13,14 +13,13 @@ async function POST(req) {
   const { body } = req;
 
   try {
-    await createProject(body);
+    const projects = await createNewProject(body);
 
     return NextResponse.json(
-      { message: 'project created with success' },
+      { message: 'project created with success', projects },
       { status: 201 }
     );
   } catch (error) {
-    console.error(error);
     return NextResponse.json(
       { error: error.message },
       { status: error.status }
